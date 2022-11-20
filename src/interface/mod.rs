@@ -37,6 +37,11 @@ pub struct ResponseResetStateBody {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct ResponseCheckDbBody {
+    pub ok: bool,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct RequestDepositAddBody {
     pub deposit_info: Vec<DepositInfo<F>>,
 }
