@@ -1,0 +1,16 @@
+[package]
+name = "intmax-rollup-interface"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+hex = "0.4"
+intmax-zkp-core = { git = "https://github.com/InternetMaximalism/intmax-zkp-core" }
+plonky2 = { git = "https://github.com/mir-protocol/plonky2" }
+serde = { version = "1.0", features = ["derive"] }
+serde-hex = "0.1"
+serde_json = "1.0"
+
+[lib]

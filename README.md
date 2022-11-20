@@ -1,0 +1,1 @@
+# IntMax Rollup aggregator API
