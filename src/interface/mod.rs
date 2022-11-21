@@ -137,7 +137,7 @@ pub struct RequestTxReceivedQuery {
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct ResponseTxReceivedQuery {
-    pub proofs: Vec<(BlockHeader<F>, SmtInclusionProof<F>, SmtInclusionProof<F>)>,
+    pub proofs: Vec<(BlockHeader<F>, SmtInclusionProof<F>, SmtInclusionProof<F>, SmtInclusionProof<F>)>,
     pub latest_block_number: u32,
 }
 
