@@ -43,8 +43,8 @@ pub struct BlockInfo<F: RichField> {
 ))]
 pub struct ReceivedAssetProof<F: RichField> {
     pub is_deposit: bool,
-    pub diff_tree_inclusion: (BlockHeader<F>, SmtInclusionProof<F>, SmtInclusionProof<F>),
-    pub account_tree_inclusion: SmtInclusionProof<F>,
+    pub diff_tree_inclusion_proof: (BlockHeader<F>, SmtInclusionProof<F>, SmtInclusionProof<F>),
+    pub account_tree_inclusion_proof: SmtInclusionProof<F>,
 }
 
 #[allow(clippy::type_complexity)]
