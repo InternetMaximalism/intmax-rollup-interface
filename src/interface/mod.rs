@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 
 use intmax_zkp_core::{
     rollup::{
-        circuits::merge_and_purge::MergeAndPurgeTransitionProofWithPublicInputs,
+        block::BlockInfo, circuits::merge_and_purge::MergeAndPurgeTransitionProofWithPublicInputs,
         gadgets::deposit_block::DepositInfo,
     },
     sparse_merkle_tree::{
@@ -11,11 +11,12 @@ use intmax_zkp_core::{
         goldilocks_poseidon::{GoldilocksHashOut, WrappedHashOut},
         proof::{SparseMerkleInclusionProof, SparseMerkleProcessProof},
     },
-    transaction::gadgets::merge::MergeProof,
+    transaction::{
+        asset::{Asset, ReceivedAssetProof},
+        gadgets::merge::MergeProof,
+    },
     zkdsa::{account::Address, circuits::SimpleSignatureProofWithPublicInputs},
 };
-
-use crate::utils::{Asset, BlockInfo, ReceivedAssetProof};
 
 type K = GoldilocksHashOut;
 type V = GoldilocksHashOut;
