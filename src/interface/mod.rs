@@ -86,6 +86,17 @@ pub struct ResponseTxSendBody {
     pub tx_hash: GoldilocksHashOut,
 }
 
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RequestTxBroadcastBody {
+    pub signer_address: Address<F>,
+    pub purge_output_inclusion_witnesses: Vec<SmtInclusionProof<F>>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct ResponseTxBroadcastBody {
+    pub ok: bool,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestBlockProposeBody {
     // pub user_tx_proofs: Vec<MergeAndPurgeTransitionProofWithPublicInputs<F, C, D>>,
