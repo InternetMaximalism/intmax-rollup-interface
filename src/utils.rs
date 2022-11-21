@@ -64,7 +64,7 @@ fn test_serde_token_kind() {
     assert_eq!(decoded_kind, kind);
 }
 
-#[derive(Copy, Clone, Debug, Serialize, Deserialize)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Asset<F: RichField> {
     #[serde(bound(
         serialize = "TokenKind<F>: Serialize",
@@ -76,13 +76,14 @@ pub struct Asset<F: RichField> {
 
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 #[serde(bound(
-    serialize = "BlockHeader<F>: Serialize, SmtInclusionProof<F>: Serialize",
-    deserialize = "BlockHeader<F>: Deserialize<'de>, SmtInclusionProof<F>: Deserialize<'de>"
+    serialize = "BlockHeader<F>: Serialize, SmtInclusionProof<F>: Serialize, Asset<F>: Serialize",
+    deserialize = "BlockHeader<F>: Deserialize<'de>, SmtInclusionProof<F>: Deserialize<'de>, Asset<F>: Deserialize<'de>"
 ))]
 pub struct ReceivedAssetProof<F: RichField> {
     pub is_deposit: bool,
     pub diff_tree_inclusion_proof: (BlockHeader<F>, SmtInclusionProof<F>, SmtInclusionProof<F>),
     pub account_tree_inclusion_proof: SmtInclusionProof<F>,
+    pub asset: Asset<F>,
 }
 
 #[allow(clippy::type_complexity)]
