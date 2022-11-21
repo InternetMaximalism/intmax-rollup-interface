@@ -36,6 +36,17 @@ pub struct BlockInfo<F: RichField> {
     // world_state_tree_proof
 }
 
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+#[serde(bound(
+    serialize = "BlockHeader<F>: Serialize, SmtInclusionProof<F>: Serialize",
+    deserialize = "BlockHeader<F>: Deserialize<'de>, SmtInclusionProof<F>: Deserialize<'de>"
+))]
+pub struct ReceivedAssetProof<F: RichField> {
+    pub is_deposit: bool,
+    pub diff_tree_inclusion: (BlockHeader<F>, SmtInclusionProof<F>, SmtInclusionProof<F>),
+    pub account_tree_inclusion: SmtInclusionProof<F>,
+}
+
 #[allow(clippy::type_complexity)]
 pub fn make_deposit_proof(
     deposit_list: &[DepositInfo<GoldilocksField>],

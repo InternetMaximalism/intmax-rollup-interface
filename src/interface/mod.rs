@@ -11,11 +11,11 @@ use intmax_zkp_core::{
         goldilocks_poseidon::{GoldilocksHashOut, WrappedHashOut},
         proof::{SparseMerkleInclusionProof, SparseMerkleProcessProof},
     },
-    transaction::{gadgets::merge::MergeProof, block_header::BlockHeader},
+    transaction::gadgets::merge::MergeProof,
     zkdsa::{account::Address, circuits::SimpleSignatureProofWithPublicInputs},
 };
 
-use crate::utils::BlockInfo;
+use crate::utils::{BlockInfo, ReceivedAssetProof};
 
 type K = GoldilocksHashOut;
 type V = GoldilocksHashOut;
@@ -137,7 +137,7 @@ pub struct RequestTxReceivedQuery {
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct ResponseTxReceivedQuery {
-    pub proofs: Vec<(BlockHeader<F>, SmtInclusionProof<F>, SmtInclusionProof<F>, SmtInclusionProof<F>)>,
+    pub proofs: Vec<ReceivedAssetProof<F>>,
     pub latest_block_number: u32,
 }
 
