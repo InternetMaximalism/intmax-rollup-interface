@@ -11,7 +11,7 @@ use intmax_zkp_core::{
         goldilocks_poseidon::{GoldilocksHashOut, WrappedHashOut},
         proof::{SparseMerkleInclusionProof, SparseMerkleProcessProof},
     },
-    transaction::gadgets::merge::MergeProof,
+    transaction::{gadgets::merge::MergeProof, block_header::BlockHeader},
     zkdsa::{account::Address, circuits::SimpleSignatureProofWithPublicInputs},
 };
 
@@ -128,6 +128,19 @@ pub struct ResponseBlockApproveBody {
     pub new_block: BlockInfo<F>,
 }
 
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RequestTxReceivedQuery {
+    pub user_address: Address<F>,
+    pub since: Option<u32>,
+    pub until: Option<u32>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct ResponseTxReceivedQuery {
+    pub proofs: Vec<(BlockHeader<F>, SmtInclusionProof<F>, SmtInclusionProof<F>)>,
+    pub latest_block_number: u32,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestBlockQuery {
     pub user_address: Address<F>,
@@ -140,6 +153,7 @@ pub struct ResponseBlockQuery {
     pub blocks: Vec<BlockInfo<F>>,
     pub latest_block_number: u32,
 }
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestTxWitnessQuery {
     pub user_address: Address<F>,
