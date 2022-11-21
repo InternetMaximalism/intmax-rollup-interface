@@ -8,6 +8,7 @@ use intmax_zkp_core::{
         },
     },
     transaction::block_header::BlockHeader,
+    zkdsa::account::Address,
 };
 use plonky2::{
     field::goldilocks_field::GoldilocksField,
@@ -34,6 +35,43 @@ pub struct BlockInfo<F: RichField> {
     pub deposit_list: Vec<DepositInfo<F>>,
     // diff_tree_proof
     // world_state_tree_proof
+}
+
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
+pub struct TokenKind<F: RichField> {
+    #[serde(bound(
+        serialize = "Address<F>: Serialize",
+        deserialize = "Address<F>: Deserialize<'de>"
+    ))]
+    pub contract_address: Address<F>,
+    #[serde(bound(
+        serialize = "WrappedHashOut<F>: Serialize",
+        deserialize = "WrappedHashOut<F>: Deserialize<'de>"
+    ))]
+    pub variable_index: WrappedHashOut<F>,
+}
+
+#[test]
+fn test_serde_token_kind() {
+    use plonky2::{field::types::Sample, hash::hash_types::HashOut};
+
+    let kind: TokenKind<GoldilocksField> = TokenKind {
+        contract_address: Address::rand(),
+        variable_index: HashOut::rand().into(),
+    };
+    let encoded_kind = serde_json::to_string(&kind).unwrap();
+    let decoded_kind: TokenKind<GoldilocksField> = serde_json::from_str(&encoded_kind).unwrap();
+    assert_eq!(decoded_kind, kind);
+}
+
+#[derive(Copy, Clone, Debug, Serialize, Deserialize)]
+pub struct Asset<F: RichField> {
+    #[serde(bound(
+        serialize = "TokenKind<F>: Serialize",
+        deserialize = "TokenKind<F>: Deserialize<'de>"
+    ))]
+    pub kind: TokenKind<F>,
+    pub amount: u64,
 }
 
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]

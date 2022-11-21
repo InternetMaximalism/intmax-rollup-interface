@@ -15,7 +15,7 @@ use intmax_zkp_core::{
     zkdsa::{account::Address, circuits::SimpleSignatureProofWithPublicInputs},
 };
 
-use crate::utils::{BlockInfo, ReceivedAssetProof};
+use crate::utils::{Asset, BlockInfo, ReceivedAssetProof};
 
 type K = GoldilocksHashOut;
 type V = GoldilocksHashOut;
@@ -90,6 +90,7 @@ pub struct ResponseTxSendBody {
 pub struct RequestTxBroadcastBody {
     pub signer_address: Address<F>,
     pub purge_output_inclusion_witnesses: Vec<SmtInclusionProof<F>>,
+    pub asset: Asset<F>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
