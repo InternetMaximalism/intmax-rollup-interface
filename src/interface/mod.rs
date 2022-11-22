@@ -11,7 +11,10 @@ use intmax_zkp_core::{
         goldilocks_poseidon::{GoldilocksHashOut, WrappedHashOut},
         proof::{SparseMerkleInclusionProof, SparseMerkleProcessProof},
     },
-    transaction::{asset::ReceivedAssetProof, gadgets::merge::MergeProof},
+    transaction::{
+        asset::{Asset, ReceivedAssetProof},
+        gadgets::merge::MergeProof,
+    },
     zkdsa::{account::Address, circuits::SimpleSignatureProofWithPublicInputs},
 };
 
@@ -87,11 +90,8 @@ pub struct ResponseTxSendBody {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct RequestTxBroadcastBody {
     pub signer_address: Address<F>,
-    pub purge_output_inclusion_witnesses: Vec<(
-        SmtInclusionProof<F>,
-        SmtInclusionProof<F>,
-        SmtInclusionProof<F>,
-    )>,
+    pub purge_output_inclusion_witnesses: Vec<SmtInclusionProof<F>>,
+    pub assets: Vec<Vec<Asset<F>>>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
