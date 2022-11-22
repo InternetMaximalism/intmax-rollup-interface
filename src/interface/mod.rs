@@ -91,7 +91,7 @@ pub struct ResponseTxSendBody {
 pub struct RequestTxBroadcastBody {
     pub signer_address: Address<F>,
     pub purge_output_inclusion_witnesses: Vec<SmtInclusionProof<F>>,
-    pub asset: Asset<F>,
+    pub assets: Vec<Asset<F>>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
