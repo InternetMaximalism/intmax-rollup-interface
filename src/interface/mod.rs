@@ -2,10 +2,7 @@ use plonky2::plonk::config::{GenericConfig, PoseidonGoldilocksConfig};
 use serde::{Deserialize, Serialize};
 
 use intmax_zkp_core::{
-    rollup::{
-        block::BlockInfo, circuits::merge_and_purge::MergeAndPurgeTransitionProofWithPublicInputs,
-        gadgets::deposit_block::DepositInfo,
-    },
+    rollup::{block::BlockInfo, gadgets::deposit_block::DepositInfo},
     sparse_merkle_tree::{
         gadgets::{process::process_smt::SmtProcessProof, verify::verify_smt::SmtInclusionProof},
         goldilocks_poseidon::{GoldilocksHashOut, WrappedHashOut},
@@ -13,6 +10,7 @@ use intmax_zkp_core::{
     },
     transaction::{
         asset::{Asset, ReceivedAssetProof},
+        circuits::MergeAndPurgeTransitionProofWithPublicInputs,
         gadgets::merge::MergeProof,
     },
     zkdsa::{account::Address, circuits::SimpleSignatureProofWithPublicInputs},
