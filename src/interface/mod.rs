@@ -183,6 +183,7 @@ pub struct ResponseUserAssetProofBody {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestAccountLatestBlockQuery {
     pub user_address: Address<F>,
+    pub block_number: Option<u32>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
