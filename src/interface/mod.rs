@@ -2,16 +2,17 @@ use plonky2::plonk::config::{GenericConfig, PoseidonGoldilocksConfig};
 use serde::{Deserialize, Serialize};
 
 use intmax_zkp_core::{
-    rollup::{
-        block::BlockInfo, circuits::merge_and_purge::MergeAndPurgeTransitionProofWithPublicInputs,
-        gadgets::deposit_block::DepositInfo,
-    },
+    rollup::{block::BlockInfo, gadgets::deposit_block::DepositInfo},
     sparse_merkle_tree::{
         gadgets::{process::process_smt::SmtProcessProof, verify::verify_smt::SmtInclusionProof},
         goldilocks_poseidon::{GoldilocksHashOut, WrappedHashOut},
         proof::{SparseMerkleInclusionProof, SparseMerkleProcessProof},
     },
-    transaction::{asset::ReceivedAssetProof, gadgets::merge::MergeProof},
+    transaction::{
+        asset::{Asset, ReceivedAssetProof},
+        circuits::MergeAndPurgeTransitionProofWithPublicInputs,
+        gadgets::merge::MergeProof,
+    },
     zkdsa::{account::Address, circuits::SimpleSignatureProofWithPublicInputs},
 };
 
@@ -87,11 +88,9 @@ pub struct ResponseTxSendBody {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct RequestTxBroadcastBody {
     pub signer_address: Address<F>,
-    pub purge_output_inclusion_witnesses: Vec<(
-        SmtInclusionProof<F>,
-        SmtInclusionProof<F>,
-        SmtInclusionProof<F>,
-    )>,
+    pub tx_hash: WrappedHashOut<F>,
+    pub purge_output_inclusion_witnesses: Vec<SmtInclusionProof<F>>,
+    pub assets: Vec<Vec<Asset<F>>>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -182,6 +181,7 @@ pub struct ResponseUserAssetProofBody {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestAccountLatestBlockQuery {
     pub user_address: Address<F>,
+    pub block_number: Option<u32>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
