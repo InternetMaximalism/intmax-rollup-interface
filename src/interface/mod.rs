@@ -89,6 +89,7 @@ pub struct ResponseTxSendBody {
 pub struct RequestTxBroadcastBody {
     pub signer_address: Address<F>,
     pub tx_hash: WrappedHashOut<F>,
+    pub nonce: WrappedHashOut<F>,
     pub purge_output_inclusion_witnesses: Vec<SmtInclusionProof<F>>,
     pub assets: Vec<Vec<Asset<F>>>,
 }
