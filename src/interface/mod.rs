@@ -145,7 +145,6 @@ pub struct ResponseTxReceivedQuery {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestBlockQuery {
-    pub user_address: Address<F>,
     pub since: Option<u32>,
     pub until: Option<u32>,
 }
