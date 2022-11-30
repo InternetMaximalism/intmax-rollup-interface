@@ -179,13 +179,9 @@ pub struct ResponseUserAssetProofBody {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RequestAccountLatestBlockQuery {
-    pub user_address: Address<F>,
-    pub block_number: Option<u32>,
-}
+pub struct RequestLatestBlockQuery {}
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResponseAccountLatestBlockQuery {
-    pub latest_block_number: u32,
-    pub proof: SmtInclusionProof<F>,
+pub struct ResponseLatestBlockQuery {
+    pub block: BlockInfo<F>,
 }
