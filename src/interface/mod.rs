@@ -5,7 +5,7 @@ use intmax_zkp_core::{
     rollup::{block::BlockInfo, gadgets::deposit_block::DepositInfo},
     sparse_merkle_tree::{
         gadgets::{process::process_smt::SmtProcessProof, verify::verify_smt::SmtInclusionProof},
-        goldilocks_poseidon::{GoldilocksHashOut, WrappedHashOut},
+        goldilocks_poseidon::{GoldilocksHashOut, WrappedHashOut, Wrapper},
         proof::{SparseMerkleInclusionProof, SparseMerkleProcessProof},
     },
     transaction::{
@@ -13,7 +13,10 @@ use intmax_zkp_core::{
         circuits::MergeAndPurgeTransitionProofWithPublicInputs,
         gadgets::merge::MergeProof,
     },
-    zkdsa::{account::Address, circuits::SimpleSignatureProofWithPublicInputs},
+    zkdsa::{
+        account::{Address, PublicKey},
+        circuits::SimpleSignatureProofWithPublicInputs,
+    },
 };
 
 type K = GoldilocksHashOut;
@@ -38,6 +41,16 @@ pub struct ResponseResetStateBody {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct ResponseCheckDbBody {
     pub ok: bool,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RequestAccountRegisterBody {
+    pub public_key: Wrapper<PublicKey<F>>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct ResponseAccountRegisterBody {
+    pub address: Address<F>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
