@@ -2,6 +2,7 @@ use plonky2::plonk::config::{GenericConfig, PoseidonGoldilocksConfig};
 use serde::{Deserialize, Serialize};
 
 use intmax_zkp_core::{
+    merkle_tree::tree::MerkleProof,
     rollup::{block::BlockInfo, gadgets::deposit_block::DepositInfo},
     sparse_merkle_tree::{
         gadgets::{process::process_smt::SmtProcessProof, verify::verify_smt::SmtInclusionProof},
@@ -177,7 +178,7 @@ pub struct RequestTxWitnessQuery {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ResponseTxWitnessQuery {
     // pub block_header: BlockHeader<F>,
-    pub tx_inclusion_witness: SmtInclusionProof<F>,
+    pub tx_inclusion_witness: MerkleProof<F>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
