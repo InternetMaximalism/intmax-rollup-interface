@@ -23,6 +23,9 @@ pub const N_LOG_CONTRACTS: usize = N_LOG_MAX_CONTRACTS;
 /// diff tree における transaction 層の tree の深さ
 pub const N_LOG_VARIABLES: usize = N_LOG_MAX_VARIABLES;
 
+/// 1 つの block に含める新規 account の数
+pub const N_REGISTERS: usize = 16;
+
 /// 1 つの block に含める deposit の数
 pub const N_DEPOSITS: usize = 16;
 
