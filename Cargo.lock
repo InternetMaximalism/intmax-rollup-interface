@@ -828,11 +828,10 @@ dependencies = [
 [[package]]
 name = "intmax-zkp-core"
 version = "0.1.0"
-source = "git+https://github.com/InternetMaximalism/intmax-zkp-core?rev=0f3ac19dadfbebdc37e09572443edf18ee3de4b2#0f3ac19dadfbebdc37e09572443edf18ee3de4b2"
+source = "git+https://github.com/InternetMaximalism/intmax-zkp-core?rev=bb8c7a9f76058a8d5f15074c79aefd2c2bfed22e#bb8c7a9f76058a8d5f15074c79aefd2c2bfed22e"
 dependencies = [
  "anyhow",
  "hex",
- "itertools",
  "num",
  "num-bigint",
  "num-traits",
