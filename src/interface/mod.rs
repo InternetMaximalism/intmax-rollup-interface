@@ -11,6 +11,7 @@ use intmax_zkp_core::{
     },
     transaction::{
         asset::{Asset, ReceivedAssetProof},
+        block_header::BlockHeader,
         circuits::MergeAndPurgeTransitionProofWithPublicInputs,
         gadgets::merge::MergeProof,
     },
@@ -167,6 +168,29 @@ pub struct RequestBlockQuery {
 pub struct ResponseBlockQuery {
     pub blocks: Vec<BlockInfo<F>>,
     pub latest_block_number: u32,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct BlockDetails {
+    pub block_number: u32,
+    pub user_tx_proofs: Vec<MergeAndPurgeTransitionProofWithPublicInputs<F, C, D>>,
+    pub received_signature_proofs: Vec<Option<SimpleSignatureProofWithPublicInputs<F, C, D>>>,
+    pub world_state_process_proofs: Vec<SmtProcessProof<F>>,
+    pub world_state_revert_proofs: Vec<SmtProcessProof<F>>,
+    pub latest_account_process_proofs: Vec<SmtProcessProof<F>>,
+    pub deposit_list: Vec<DepositInfo<F>>,
+    pub block_headers_proof_siblings: Vec<WrappedHashOut<F>>,
+    pub prev_block_header: BlockHeader<F>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RequestBlockDetailQuery {
+    pub block_number: u32,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResponseBlockDetailQuery {
+    pub block_details: BlockDetails,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
