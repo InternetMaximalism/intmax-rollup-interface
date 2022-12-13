@@ -181,6 +181,8 @@ pub struct BlockDetails {
     pub deposit_list: Vec<DepositInfo<F>>,
     pub block_headers_proof_siblings: Vec<WrappedHashOut<F>>,
     pub prev_block_header: BlockHeader<F>,
+    pub default_simple_signature_proof: SimpleSignatureProofWithPublicInputs<F, C, D>,
+    pub default_user_tx_proof: MergeAndPurgeTransitionProofWithPublicInputs<F, C, D>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
