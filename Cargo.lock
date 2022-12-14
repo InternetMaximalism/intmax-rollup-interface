@@ -828,7 +828,7 @@ dependencies = [
 [[package]]
 name = "intmax-zkp-core"
 version = "0.1.0"
-source = "git+https://github.com/InternetMaximalism/intmax-zkp-core?rev=bb8c7a9f76058a8d5f15074c79aefd2c2bfed22e#bb8c7a9f76058a8d5f15074c79aefd2c2bfed22e"
+source = "git+https://github.com/InternetMaximalism/intmax-zkp-core?rev=a9bafd4447805849ddcb66596a4502578a3770f4#a9bafd4447805849ddcb66596a4502578a3770f4"
 dependencies = [
  "anyhow",
  "hex",
