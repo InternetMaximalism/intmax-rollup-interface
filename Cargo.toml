@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 hex = "0.4"
-intmax-zkp-core = { git = "https://github.com/InternetMaximalism/intmax-zkp-core", rev = "832b300018cc06dfc932b23c8edb4cd84912284c" }
+intmax-zkp-core = { git = "https://github.com/InternetMaximalism/intmax-zkp-core", rev = "a9bafd4447805849ddcb66596a4502578a3770f4" }
 plonky2 = { git = "https://github.com/mir-protocol/plonky2", rev = "d527073416dd8cbc04457b8cb856b2fec3fa0e6c" }
 serde = { version = "1.0", features = ["derive"] }
 serde-hex = "0.1"
