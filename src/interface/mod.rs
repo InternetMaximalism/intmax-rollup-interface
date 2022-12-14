@@ -36,8 +36,9 @@ pub struct ResponseSingleMessage {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct ResponseResetStateBody {
-    pub ok: bool,
+struct ResponseCheckHealth {
+    name: String,
+    version: String,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
