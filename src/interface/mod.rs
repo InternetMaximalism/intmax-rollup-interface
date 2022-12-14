@@ -146,14 +146,14 @@ pub struct ResponseBlockApproveBody {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct RequestTxReceivedQuery {
+pub struct RequestAssetReceivedQuery {
     pub user_address: Address<F>,
     pub since: Option<u32>,
     pub until: Option<u32>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct ResponseTxReceivedQuery {
+pub struct ResponseAssetReceivedQuery {
     pub proofs: Vec<ReceivedAssetProof<F>>,
     pub latest_block_number: u32,
 }
@@ -196,9 +196,15 @@ pub struct ResponseBlockDetailQuery {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RequestTxWitnessQuery {
+pub struct RequestTxReceiptQuery {
     pub user_address: Address<F>,
     pub tx_hash: WrappedHashOut<F>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResponseTxReceiptQuery {
+    pub user_asset_inclusion_witness: SparseMerkleInclusionProof<K, V, I>,
+    pub tx_inclusion_witness: MerkleProof<F>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -209,7 +215,7 @@ pub struct ResponseTxWitnessQuery {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestUserAssetProofQuery {
-    pub user_state_root: GoldilocksHashOut,
+    pub world_state_digest: GoldilocksHashOut, // unused
     pub user_address: Address<F>,
 }
 
