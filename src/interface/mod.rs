@@ -31,19 +31,14 @@ type F = <C as GenericConfig<D>>::F;
 const D: usize = 2;
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct ResponseSingleMessage {
-    pub message: String,
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-struct ResponseCheckHealth {
-    name: String,
-    version: String,
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct ResponseCheckDbBody {
+pub struct ResponseBool {
     pub ok: bool,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct ResponseCheckHealth {
+    pub name: String,
+    pub version: String,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
