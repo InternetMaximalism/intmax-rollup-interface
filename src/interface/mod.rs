@@ -30,6 +30,8 @@ type C = PoseidonGoldilocksConfig;
 type F = <C as GenericConfig<D>>::F;
 const D: usize = 2;
 
+pub const AGGREGATOR_NAME: &str = "intmax-rollup";
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ResponseBool {
     pub ok: bool,
