@@ -1,11 +1,11 @@
 /// world state tree における user 層の tree の深さ
-pub const N_LOG_MAX_USERS: usize = 24;
+pub const N_LOG_MAX_USERS: usize = 16;
 
 /// world state tree における user 層の tree の深さ
 pub const N_LOG_MAX_TXS: usize = 24;
 
 /// world state tree における user 層の tree の深さ
-pub const N_LOG_MAX_CONTRACTS: usize = 8;
+pub const N_LOG_MAX_CONTRACTS: usize = N_LOG_MAX_USERS;
 
 /// world state tree における user 層の tree の深さ
 pub const N_LOG_MAX_VARIABLES: usize = 8;
@@ -15,7 +15,7 @@ pub const N_LOG_TXS: usize = 4;
 pub const N_TXS: usize = 2usize.pow(N_LOG_TXS as u32);
 
 /// diff tree における transaction 層の tree の深さ
-pub const N_LOG_RECIPIENTS: usize = 8;
+pub const N_LOG_RECIPIENTS: usize = N_LOG_MAX_USERS;
 
 /// diff tree における transaction 層の tree の深さ
 pub const N_LOG_CONTRACTS: usize = N_LOG_MAX_CONTRACTS;
