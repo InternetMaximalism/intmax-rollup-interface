@@ -1,8 +1,6 @@
-use plonky2::plonk::config::{GenericConfig, PoseidonGoldilocksConfig};
-use serde::{Deserialize, Serialize};
-
 use intmax_zkp_core::{
     merkle_tree::tree::MerkleProof,
+    plonky2::plonk::config::{GenericConfig, PoseidonGoldilocksConfig},
     rollup::{block::BlockInfo, gadgets::deposit_block::DepositInfo},
     sparse_merkle_tree::{
         gadgets::{process::process_smt::SmtProcessProof, verify::verify_smt::SmtInclusionProof},
@@ -20,6 +18,7 @@ use intmax_zkp_core::{
         circuits::SimpleSignatureProofWithPublicInputs,
     },
 };
+use serde::{Deserialize, Serialize};
 
 type K = GoldilocksHashOut;
 type V = GoldilocksHashOut;
