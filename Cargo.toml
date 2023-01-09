@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 hex = "0.4"
-intmax-zkp-core = { git = "https://github.com/InternetMaximalism/intmax-zkp-core", rev = "35ab2437b620a2350bedad3fcad3085f8504ce26" }
+intmax-zkp-core = { git = "https://github.com/InternetMaximalism/intmax-zkp-core", rev = "4f66325389ed1a15410ab544d8e782925a7623a1" }
 serde = { version = "1.0", features = ["derive"] }
 serde-hex = "0.1"
 serde_json = "1.0"
