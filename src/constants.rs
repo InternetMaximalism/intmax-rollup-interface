@@ -1,42 +1,20 @@
-/// world state tree における user 層の tree の深さ
-pub const N_LOG_MAX_USERS: usize = 16;
-
-/// world state tree における user 層の tree の深さ
-pub const N_LOG_MAX_TXS: usize = 24;
-
-/// world state tree における user 層の tree の深さ
-pub const N_LOG_MAX_CONTRACTS: usize = N_LOG_MAX_USERS;
-
-/// world state tree における user 層の tree の深さ
-pub const N_LOG_MAX_VARIABLES: usize = 8;
-
-/// diff tree における transaction 層の tree の深さ
-pub const N_LOG_TXS: usize = 4;
-pub const N_TXS: usize = 2usize.pow(N_LOG_TXS as u32);
-
-/// diff tree における transaction 層の tree の深さ
-pub const N_LOG_RECIPIENTS: usize = N_LOG_MAX_USERS;
-
-/// diff tree における transaction 層の tree の深さ
-pub const N_LOG_CONTRACTS: usize = N_LOG_MAX_CONTRACTS;
-
-/// diff tree における transaction 層の tree の深さ
-pub const N_LOG_VARIABLES: usize = N_LOG_MAX_VARIABLES;
-
-/// 1 つの block に含める新規 account の数
-pub const N_REGISTERS: usize = 16;
-
-/// 1 つの block に含める deposit の数
-pub const N_DEPOSITS: usize = 16;
-
-/// 1 つの block に含める merge の数
-pub const N_MERGES: usize = 16;
-
-/// 1 つの block に含める purge の数
-pub const N_DIFFS: usize = 16;
-
-/// 1 つの batch でまとめる block の数
-pub const N_BLOCKS: usize = 4;
+use intmax_zkp_core::config::RollupConstants;
 
 /// block number の最大値の対数
 pub const N_LOG_MAX_BLOCKS: usize = 32;
+
+pub const ROLLUP_CONSTANTS: RollupConstants = RollupConstants {
+    log_max_n_users: 3,
+    log_max_n_txs: 3,
+    log_max_n_contracts: 3,
+    log_max_n_variables: 3,
+    log_n_txs: 2,
+    log_n_recipients: 3,
+    log_n_contracts: 3,
+    log_n_variables: 3,
+    n_registrations: 2,
+    n_diffs: 2,
+    n_merges: 2,
+    n_deposits: 2,
+    n_blocks: 2,
+};
