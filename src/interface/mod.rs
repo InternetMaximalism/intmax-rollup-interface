@@ -98,6 +98,17 @@ pub struct ResponseTxSendBody {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RequestTxConfirmationWitnessQuery {
+    pub tx_hash: GoldilocksHashOut,
+    pub recipient: Address<F>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct ResponseTxConfirmationWitnessQuery {
+    pub witness: String,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct RequestTxBroadcastBody {
     pub signer_address: Address<F>,
     pub tx_hash: WrappedHashOut<F>,
@@ -176,6 +187,8 @@ pub struct BlockDetails {
     pub world_state_revert_proofs: Vec<SmtProcessProof<F>>,
     pub latest_account_process_proofs: Vec<SmtProcessProof<F>>,
     pub deposit_list: Vec<DepositInfo<F>>,
+    pub scroll_flag_list: Vec<DepositInfo<F>>,
+    pub polygon_flag_list: Vec<DepositInfo<F>>,
     pub block_headers_proof_siblings: Vec<WrappedHashOut<F>>,
     pub prev_block_header: BlockHeader<F>,
     pub default_simple_signature_proof: SimpleSignatureProofWithPublicInputs<F, C, D>,
