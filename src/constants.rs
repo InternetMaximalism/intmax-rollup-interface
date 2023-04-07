@@ -48,8 +48,8 @@ pub struct ContractConfig<'a> {
 pub const SCROLL_NETWORK_CONFIG: ContractConfig = ContractConfig {
     rpc_url: "https://alpha-rpc.scroll.io/l2",
     chain_id: 534353,
-    offer_manager_contract_address: "0xD8f7FbABEacD6f103FB7278b3a7106e2fFBF0763",
-    reverse_offer_manager_contract_address: "0x2D372972f8c325dEFD7252c0e7d8cBd09a8A4c67",
+    offer_manager_contract_address: "0x8fa7889756A602d506455985E1314Ad40b65c6bD",
+    reverse_offer_manager_contract_address: "0xd10f74E815a9A8B54A39059DdB39a8925DD0aD8A",
 };
 
 pub const POLYGON_NETWORK_CONFIG: ContractConfig = ContractConfig {
