@@ -45,6 +45,8 @@ pub struct ContractConfig<'a> {
     pub reverse_offer_manager_contract_address: &'a str,
 }
 
+pub const DEPLOYER: &str = "0x8f68aE37a8339c8cD120187D41a284921F73feBE";
+
 pub const SCROLL_NETWORK_CONFIG: ContractConfig = ContractConfig {
     rpc_url: "https://alpha-rpc.scroll.io/l2",
     chain_id: 534353,
@@ -55,6 +57,6 @@ pub const SCROLL_NETWORK_CONFIG: ContractConfig = ContractConfig {
 pub const POLYGON_NETWORK_CONFIG: ContractConfig = ContractConfig {
     rpc_url: "https://rpc.public.zkevm-test.net",
     chain_id: 1442,
-    offer_manager_contract_address: "0x5602c213E1aEe9159E2A4d11fbFe19C56E7B3bE1",
-    reverse_offer_manager_contract_address: "0xD9626E93c03E83647b1202a4a1CA96Bcc399F9E7",
+    offer_manager_contract_address: "0x161a72Bc1b76586a36A9014Dd58d401eE2B24094",
+    reverse_offer_manager_contract_address: "0x1E316b313de98C7eCb2393995ef27715E3E1c7a7",
 };
