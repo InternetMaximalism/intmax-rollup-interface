@@ -10,6 +10,8 @@ const LOG_N_CONTRACTS: usize = LOG_MAX_N_CONTRACTS;
 const LOG_N_VARIABLES: usize = LOG_MAX_N_VARIABLES;
 const N_REGISTRATIONS: usize = 16;
 const N_DEPOSITS: usize = 16;
+const N_SCROLL_FLAGS: usize = 16;
+const N_POLYGON_FLAGS: usize = 16;
 const N_MERGES: usize = 16;
 const N_DIFFS: usize = 16;
 const N_BLOCKS: usize = 4;
@@ -30,5 +32,31 @@ pub const ROLLUP_CONSTANTS: RollupConstants = RollupConstants {
     n_diffs: N_DIFFS,
     n_merges: N_MERGES,
     n_deposits: N_DEPOSITS,
+    n_scroll_flags: N_SCROLL_FLAGS,
+    n_polygon_flags: N_POLYGON_FLAGS,
     n_blocks: N_BLOCKS,
+};
+
+#[derive(Clone)]
+pub struct ContractConfig<'a> {
+    pub rpc_url: &'a str,
+    pub chain_id: u64,
+    pub offer_manager_contract_address: &'a str,
+    pub reverse_offer_manager_contract_address: &'a str,
+}
+
+pub const DEPLOYER: &str = "0x8f68aE37a8339c8cD120187D41a284921F73feBE";
+
+pub const SCROLL_NETWORK_CONFIG: ContractConfig = ContractConfig {
+    rpc_url: "https://alpha-rpc.scroll.io/l2",
+    chain_id: 534353,
+    offer_manager_contract_address: "0x8fa7889756A602d506455985E1314Ad40b65c6bD",
+    reverse_offer_manager_contract_address: "0xd10f74E815a9A8B54A39059DdB39a8925DD0aD8A",
+};
+
+pub const POLYGON_NETWORK_CONFIG: ContractConfig = ContractConfig {
+    rpc_url: "https://rpc.public.zkevm-test.net",
+    chain_id: 1442,
+    offer_manager_contract_address: "0x161a72Bc1b76586a36A9014Dd58d401eE2B24094",
+    reverse_offer_manager_contract_address: "0x1E316b313de98C7eCb2393995ef27715E3E1c7a7",
 };
