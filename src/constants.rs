@@ -50,8 +50,8 @@ pub const DEPLOYER: &str = "0x8f68aE37a8339c8cD120187D41a284921F73feBE";
 pub const SCROLL_NETWORK_CONFIG: ContractConfig = ContractConfig {
     rpc_url: "https://alpha-rpc.scroll.io/l2",
     chain_id: 534353,
-    offer_manager_contract_address: "0x8fa7889756A602d506455985E1314Ad40b65c6bD",
-    reverse_offer_manager_contract_address: "0xd10f74E815a9A8B54A39059DdB39a8925DD0aD8A",
+    offer_manager_contract_address: "0x007c969728eE4f068ceCF3405D65a037dB5BeEa1",
+    reverse_offer_manager_contract_address: "0x4ee8cB7864df06A8c7703988C15bAaAB9ac47CAe",
 };
 
 pub const POLYGON_NETWORK_CONFIG: ContractConfig = ContractConfig {
