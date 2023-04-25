@@ -41,6 +41,7 @@ pub const ROLLUP_CONSTANTS: RollupConstants = RollupConstants {
 pub struct ContractConfig<'a> {
     pub rpc_url: &'a str,
     pub chain_id: u64,
+    pub verifier_contract_address: &'a str,
     pub offer_manager_contract_address: &'a str,
     pub reverse_offer_manager_contract_address: &'a str,
 }
@@ -50,6 +51,7 @@ pub const DEPLOYER: &str = "0x8f68aE37a8339c8cD120187D41a284921F73feBE";
 pub const SCROLL_ALPHA_NETWORK_CONFIG: ContractConfig = ContractConfig {
     rpc_url: "https://alpha-rpc.scroll.io/l2",
     chain_id: 534353,
+    verifier_contract_address: "",
     offer_manager_contract_address: "0x007c969728eE4f068ceCF3405D65a037dB5BeEa1",
     reverse_offer_manager_contract_address: "0x4ee8cB7864df06A8c7703988C15bAaAB9ac47CAe",
 };
@@ -57,6 +59,15 @@ pub const SCROLL_ALPHA_NETWORK_CONFIG: ContractConfig = ContractConfig {
 pub const POLYGON_ZKEVM_TEST_NETWORK_CONFIG: ContractConfig = ContractConfig {
     rpc_url: "https://rpc.public.zkevm-test.net",
     chain_id: 1442,
+    verifier_contract_address: "",
     offer_manager_contract_address: "0x161a72Bc1b76586a36A9014Dd58d401eE2B24094",
     reverse_offer_manager_contract_address: "0x1E316b313de98C7eCb2393995ef27715E3E1c7a7",
+};
+
+pub const LOCAL_NETWORK_CONFIG: ContractConfig = ContractConfig {
+    rpc_url: "http://localhost:8545",
+    chain_id: 31337,
+    verifier_contract_address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    offer_manager_contract_address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+    reverse_offer_manager_contract_address: "0x0165878A594ca255338adfa4d48449f69242Eb8F",
 };

@@ -1,7 +1,10 @@
 use intmax_zkp_core::{
     merkle_tree::tree::MerkleProof,
     plonky2::plonk::config::{GenericConfig, PoseidonGoldilocksConfig},
-    rollup::{block::BlockInfo, gadgets::deposit_block::DepositInfo},
+    rollup::{
+        address_list::TransactionSenderWithValidity, block::BlockInfo,
+        gadgets::deposit_block::DepositInfo,
+    },
     sparse_merkle_tree::{
         gadgets::{process::process_smt::SmtProcessProof, verify::verify_smt::SmtInclusionProof},
         goldilocks_poseidon::{GoldilocksHashOut, WrappedHashOut, Wrapper},
@@ -191,8 +194,33 @@ pub struct BlockDetails {
     pub polygon_flag_list: Vec<DepositInfo<F>>,
     pub block_headers_proof_siblings: Vec<WrappedHashOut<F>>,
     pub prev_block_header: BlockHeader<F>,
+    pub block_header: BlockHeader<F>,
     pub default_simple_signature_proof: SimpleSignatureProofWithPublicInputs<F, C, D>,
     pub default_user_tx_proof: MergeAndPurgeTransitionProofWithPublicInputs<F, C, D>,
+}
+
+impl From<BlockDetails> for BlockInfo<F> {
+    fn from(value: BlockDetails) -> Self {
+        Self {
+            header: value.block_header,
+            transactions: value
+                .user_tx_proofs
+                .iter()
+                .map(|v| v.public_inputs.tx_hash)
+                .collect::<Vec<_>>(),
+            deposit_list: value.deposit_list,
+            scroll_flag_list: value.scroll_flag_list,
+            polygon_flag_list: value.polygon_flag_list,
+            address_list: value
+                .latest_account_process_proofs
+                .iter()
+                .map(|v| TransactionSenderWithValidity {
+                    sender_address: Address::from_hash_out(*v.new_key),
+                    is_valid: v.new_value == WrappedHashOut::from_u32(value.block_number),
+                })
+                .collect::<Vec<_>>(),
+        }
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -232,6 +260,28 @@ pub struct RequestUserAssetProofQuery {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ResponseUserAssetProofBody {
     pub proof: SparseMerkleInclusionProof<K, V, I>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RequestTransactionProofQuery {
+    pub tx_hash: WrappedHashOut<F>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct TxDetailGoldilocks {
+    pub tx_hash: WrappedHashOut<F>,
+    pub nonce: WrappedHashOut<F>,
+    pub signer_address: Address<F>,
+    pub receiver_address: Address<F>,
+    pub inclusion_witness: SmtInclusionProof<F>,
+    pub assets: Vec<Asset<F>>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ResponseTransactionProofQuery {
+    pub tx_details: TxDetailGoldilocks,
+    pub transaction_proof: MerkleProof<F>,
+    pub block_header: BlockHeader<F>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
