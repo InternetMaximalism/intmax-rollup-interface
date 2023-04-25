@@ -282,6 +282,7 @@ pub struct ResponseTransactionProofQuery {
     pub tx_details: TxDetailGoldilocks,
     pub transaction_proof: MerkleProof<F>,
     pub block_header: BlockHeader<F>,
+    pub witness: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
