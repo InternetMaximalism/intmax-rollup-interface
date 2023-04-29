@@ -265,6 +265,7 @@ pub struct ResponseUserAssetProofBody {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestTransactionProofQuery {
     pub tx_hash: WrappedHashOut<F>,
+    pub receiver_address: Address<F>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
