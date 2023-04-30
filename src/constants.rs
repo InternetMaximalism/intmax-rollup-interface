@@ -51,7 +51,7 @@ pub const DEPLOYER: &str = "0x8f68aE37a8339c8cD120187D41a284921F73feBE";
 pub const SCROLL_ALPHA_NETWORK_CONFIG: ContractConfig = ContractConfig {
     rpc_url: "https://alpha-rpc.scroll.io/l2",
     chain_id: 534353,
-    verifier_contract_address: "",
+    verifier_contract_address: "0x4c8Ca3410AE74429068F22f29cD3D0EaAF1afdE1",
     offer_manager_contract_address: "0x007c969728eE4f068ceCF3405D65a037dB5BeEa1",
     reverse_offer_manager_contract_address: "0x4ee8cB7864df06A8c7703988C15bAaAB9ac47CAe",
 };
@@ -59,7 +59,7 @@ pub const SCROLL_ALPHA_NETWORK_CONFIG: ContractConfig = ContractConfig {
 pub const POLYGON_ZKEVM_TEST_NETWORK_CONFIG: ContractConfig = ContractConfig {
     rpc_url: "https://rpc.public.zkevm-test.net",
     chain_id: 1442,
-    verifier_contract_address: "",
+    verifier_contract_address: "0x4Ee526Eb12E534a655996e72fA275D3448CFAFf4",
     offer_manager_contract_address: "0x161a72Bc1b76586a36A9014Dd58d401eE2B24094",
     reverse_offer_manager_contract_address: "0x1E316b313de98C7eCb2393995ef27715E3E1c7a7",
 };
