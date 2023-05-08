@@ -40,6 +40,7 @@ pub const ROLLUP_CONSTANTS: RollupConstants = RollupConstants {
 #[derive(Clone)]
 pub struct ContractConfig<'a> {
     pub rpc_url: &'a str,
+    pub explorer_url: Option<&'a str>,
     pub chain_id: u64,
     pub verifier_contract_address: &'a str,
     pub offer_manager_contract_address: &'a str,
@@ -50,6 +51,7 @@ pub const DEPLOYER: &str = "0x8f68aE37a8339c8cD120187D41a284921F73feBE";
 
 pub const SCROLL_ALPHA_NETWORK_CONFIG: ContractConfig = ContractConfig {
     rpc_url: "https://alpha-rpc.scroll.io/l2",
+    explorer_url: Some("https://blockscout.scroll.io/tx/"),
     chain_id: 534353,
     verifier_contract_address: "0x4c8Ca3410AE74429068F22f29cD3D0EaAF1afdE1",
     offer_manager_contract_address: "0x007c969728eE4f068ceCF3405D65a037dB5BeEa1",
@@ -58,6 +60,7 @@ pub const SCROLL_ALPHA_NETWORK_CONFIG: ContractConfig = ContractConfig {
 
 pub const POLYGON_ZKEVM_TEST_NETWORK_CONFIG: ContractConfig = ContractConfig {
     rpc_url: "https://rpc.public.zkevm-test.net",
+    explorer_url: Some("https://testnet-zkevm.polygonscan.com/tx/"),
     chain_id: 1442,
     verifier_contract_address: "0x4Ee526Eb12E534a655996e72fA275D3448CFAFf4",
     offer_manager_contract_address: "0x161a72Bc1b76586a36A9014Dd58d401eE2B24094",
@@ -66,6 +69,7 @@ pub const POLYGON_ZKEVM_TEST_NETWORK_CONFIG: ContractConfig = ContractConfig {
 
 pub const LOCAL_NETWORK_CONFIG: ContractConfig = ContractConfig {
     rpc_url: "http://localhost:8545",
+    explorer_url: None,
     chain_id: 31337,
     verifier_contract_address: "0x610178dA211FEF7D417bC0e6FeD39F05609AD788",
     offer_manager_contract_address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
